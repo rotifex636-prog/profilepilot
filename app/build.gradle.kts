@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -26,7 +28,7 @@ android {
                 // Keystore password is NEVER hardcoded. It is read from
                 // local.properties (storePassword=...) or the
                 // PROFILEPILOT_STOREPASS environment variable.
-                val p = java.util.Properties()
+                val p = Properties()
                 val f = rootProject.file("local.properties")
                 if (f.exists()) {
                     f.inputStream().use { p.load(it) }

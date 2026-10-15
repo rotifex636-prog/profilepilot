@@ -37,16 +37,15 @@ class DevicePickerActivity : AppCompatActivity() {
         // v1.5: brand folders
         adapter.setGroups(DeviceModels.brands)
 
-        binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean = true
-
-            override fun onQueryTextChange(query: String?): Boolean {
-                val q = query.orEmpty()
+        binding.search.addTextChangedListener(object : android.text.TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: android.text.Editable?) {
+                val q = s.toString()
                 if (q.isBlank()) adapter.clearSearch()
                 else adapter.setSearchResults(
                     full.filter { it.name.contains(q, ignoreCase = true) }
                 )
-                return true
             }
         })
     }

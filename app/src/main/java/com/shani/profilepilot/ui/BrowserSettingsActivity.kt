@@ -53,10 +53,9 @@ class BrowserSettingsActivity : AppCompatActivity() {
             else binding.themeDarkBtn.isChecked = true
             themeReady = true
         }
-        binding.themeGroup.addOnButtonCheckedListener(
-            MaterialButtonToggleGroup.OnButtonCheckedListener { _, checkedId, isChecked ->
-                if (!isChecked || !themeReady) return@OnButtonCheckedListener
-                val theme = if (checkedId == R.id.themeDarkBtn) "dark_pro" else "light_clean"
+        binding.themeGroup.setOnCheckedChangeListener { _, checkedId ->
+            if (!themeReady) return@setOnCheckedChangeListener
+            val theme = if (checkedId == R.id.themeDarkBtn) "dark_pro" else "light_clean"
                 lifecycleScope.launch {
                     SettingsManager.get(this@BrowserSettingsActivity).setTheme(theme)
                     // v1.4 fix: actually apply the mode — recreate() alone kept the old UI

@@ -46,4 +46,3 @@ class SettingsManager private constructor(context: Context) {
 }
 
 
-==========================================

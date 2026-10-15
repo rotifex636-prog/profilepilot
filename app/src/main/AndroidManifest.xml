@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".ProfilePilotApp"
+        android:allowBackup="false"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.ProfilePilot">
+
+        <activity
+            android:name=".ui.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.ProfilePilot.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.HomeActivity" android:exported="false" />
+        <activity android:name=".ui.BrowserActivity" android:exported="false" />
+        <activity android:name=".ui.PopupWindowActivity" android:exported="false" />
+        <activity android:name=".ui.BrowserSettingsActivity" android:exported="false" />
+        <activity android:name=".ui.DevicePickerActivity" android:exported="false" />
+        <activity android:name=".ui.LocationPickerActivity" android:exported="false" />
+        <activity android:name=".ui.ProxySetupActivity" android:exported="false" />
+        <activity android:name=".ui.RenameStyleActivity" android:exported="false" />
+        <activity android:name=".ui.NotesActivity" android:exported="false" />
+        <activity android:name=".ui.FolderActivity" android:exported="false" />
+        <activity android:name=".ui.BackupActivity" android:exported="false" />
+
+    </application>
+
+</manifest>

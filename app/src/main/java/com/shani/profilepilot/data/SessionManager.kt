@@ -120,13 +120,16 @@ object SessionManager {
 
     private suspend fun clearInternal() {
         val cm = CookieManager.getInstance()
-        // removeAllCookies async hai — callback ka intezar (max 3s)
-        withTimeoutOrNull(3000) {
-            suspendCancellableCoroutine<Unit> { c ->
-                cm.removeAllCookies { if (c.isActive) c.resume(Unit) }
+        // removeAllCookies ko Looper thread (Main) chahiye — warna crash:
+        // "removeAllCookies must be called on a thread with a running Looper"
+        withContext(Dispatchers.Main) {
+            withTimeoutOrNull(3000) {
+                suspendCancellableCoroutine<Unit> { c ->
+                    cm.removeAllCookies { if (c.isActive) c.resume(Unit) }
+                }
             }
+            cm.flush()
         }
-        cm.flush()
         withContext(Dispatchers.Main) {
             try {
                 WebStorage.getInstance().deleteAllData()

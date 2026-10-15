@@ -14,8 +14,8 @@ android {
         applicationId = "com.shani.profilepilot"
         minSdk = 26
         targetSdk = 34
-        versionCode = 17
-        versionName = "1.7.0"
+        versionCode = 18
+        versionName = "1.7.1"
     }
 
     // Persistent keystore (same cert as Play-installed app = updates work).

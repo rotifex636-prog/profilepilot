@@ -65,8 +65,7 @@ class BrowserSettingsActivity : AppCompatActivity() {
                     )
                     recreate()
                 }
-            }
-        )
+        }
 
         // (b) Start page spinner
         binding.startPageSpinner.adapter =
